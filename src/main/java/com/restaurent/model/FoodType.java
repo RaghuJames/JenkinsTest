@@ -16,6 +16,15 @@ public class FoodType implements Serializable {
 	 */
 	private static final long serialVersionUID = 6907096037052234033L;
 	
+	 public FoodType() {}
+	 
+	 public FoodType(String typeCode, String typeDesc) {
+		super();
+		this.typeCode = typeCode;
+		this.typeDesc = typeDesc;
+	 }
+
+
 	@Id
 	@Column(name="type_code",nullable=false)
 	private String typeCode;
