@@ -1,15 +1,18 @@
 package com.restaurent.service;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.restaurent.model.FoodMenu;
 import com.restaurent.model.FoodType;
+import com.restaurent.model.MainMenu;
+import com.restaurent.model.SubMenuItemsDto;
 
 public interface FoodMenuService {
 
-	Optional<List<FoodMenu>> findBymenuLevelCode(String menuLevelCode);
 
 	List<FoodType> getFoodType();
+
+	List<MainMenu> getMainMenus();
+
+	List<SubMenuItemsDto> getAllItems();
 
 }

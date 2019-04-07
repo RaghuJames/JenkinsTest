@@ -2,30 +2,31 @@ package com.restaurent.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.restaurent.dao.FoodMenuRepository;
 import com.restaurent.dao.FoodTypeRepository;
-import com.restaurent.model.FoodMenu;
+import com.restaurent.dao.ItemsRepository;
+import com.restaurent.dao.MainMenuRepository;
+import com.restaurent.dao.SubMenuRepository;
 import com.restaurent.model.FoodType;
+import com.restaurent.model.MainMenu;
+import com.restaurent.model.SubMenuItemsDto;
 import com.restaurent.service.FoodMenuService;
 
 @Service
 public class FoodMenuServiceImpl implements FoodMenuService {
-
-	@Autowired
-	private FoodMenuRepository foodMenuRepository;
 	
 	@Autowired
 	private FoodTypeRepository foodTypeRepository;
+	@Autowired
+	private MainMenuRepository mainMenuRepository;
+	@Autowired
+	private SubMenuRepository subMenuRepository;
+	@Autowired
+	private ItemsRepository itemsRepository;
 	
-	@Override
-	public Optional<List<FoodMenu>> findBymenuLevelCode(String menuLevelCode) {
-		return this.foodMenuRepository.findBymenuLevelCode(menuLevelCode);
-	}
 
 	@Override
 	public List<FoodType> getFoodType() {
@@ -37,6 +38,21 @@ public class FoodMenuServiceImpl implements FoodMenuService {
 			});
 		return typeList;
 		
+	}
+
+	@Override
+	public List<MainMenu> getMainMenus() {
+		List<MainMenu> mainMenuList = new ArrayList<>();
+		Iterable<MainMenu> l= this.mainMenuRepository.findAll();
+		l.forEach(mainMenuList::add);
+		return mainMenuList;
+	}
+
+	@Override
+	public List<SubMenuItemsDto> getAllItems() {
+		List<SubMenuItemsDto> itemsList= this.itemsRepository.fetchSubItemsDataLeftJoin();
+		return itemsList;
+	
 	}
 
 }
