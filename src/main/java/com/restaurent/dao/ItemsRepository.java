@@ -10,7 +10,7 @@ import com.restaurent.model.SubMenuItemsDto;
 
 public interface ItemsRepository extends JpaRepository<Items, String> {
 
-	@Query("SELECT new com.restaurent.model.SubMenuItemsDto(m.menuCode,m.menuDesc,s.subMenuCode,s.subMenuDesc,i.itemCode,i.itemDesc) FROM MainMenu m LEFT JOIN  SubMenu s ON m.menuCode = s.mainMenuCode LEFT JOIN Items i ON s.subMenuCode = i.itemsSubMenuCode")
+	@Query("SELECT new com.restaurent.model.SubMenuItemsDto(m.menuCode,m.menuDesc,s.subMenuCode,s.subMenuDesc,i.itemCode,i.itemDesc,i.itemPrice) FROM MainMenu m LEFT JOIN  SubMenu s ON m.menuCode = s.mainMenuCode LEFT JOIN Items i ON s.subMenuCode = i.itemsSubMenuCode")
 	List<SubMenuItemsDto> fetchSubItemsDataLeftJoin();
 
 }

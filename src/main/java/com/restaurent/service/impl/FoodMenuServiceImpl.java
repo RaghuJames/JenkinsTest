@@ -12,6 +12,7 @@ import com.restaurent.dao.MainMenuRepository;
 import com.restaurent.dao.SubMenuRepository;
 import com.restaurent.model.FoodType;
 import com.restaurent.model.MainMenu;
+import com.restaurent.model.SubMenu;
 import com.restaurent.model.SubMenuItemsDto;
 import com.restaurent.service.FoodMenuService;
 
@@ -53,6 +54,14 @@ public class FoodMenuServiceImpl implements FoodMenuService {
 		List<SubMenuItemsDto> itemsList= this.itemsRepository.fetchSubItemsDataLeftJoin();
 		return itemsList;
 	
+	}
+
+	@Override
+	public List<SubMenu> getSubMenus() {
+		List<SubMenu> subMenuList = new ArrayList<>();
+		Iterable<SubMenu> l= this.subMenuRepository.findAll();
+		l.forEach(subMenuList::add);
+		return subMenuList;
 	}
 
 }

@@ -27,6 +27,8 @@ public class Items implements Serializable	{
 	private String itemType;
 	@Column(name="item_sub_menu_code")
 	private String itemsSubMenuCode;
+	@Column(name="item_price")
+	private Double itemPrice;
 	
 	@ManyToOne
 	@JoinColumn(name="sub_menu_code")
@@ -62,6 +64,13 @@ public class Items implements Serializable	{
 	}
 	public void setItemsSubMenuCode(String itemsSubMenuCode) {
 		this.itemsSubMenuCode = itemsSubMenuCode;
+	}
+	
+	public Double getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(Double itemPrice) {
+		this.itemPrice = itemPrice;
 	}
 	@Override
 	public String toString() {

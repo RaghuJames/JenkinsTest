@@ -7,8 +7,12 @@ public class SubMenuItemsDto {
 	private String smDesc;
 	private String itCode;
 	private String itDesc;
-		
-	public SubMenuItemsDto(String mcode, String mdesc, String smcode, String smDesc, String itCode, String itDesc) {
+	private Double itPrice;
+	
+	public SubMenuItemsDto() {
+		super();
+	}
+	public SubMenuItemsDto(String mcode, String mdesc, String smcode, String smDesc, String itCode, String itDesc,Double itPrice) {
 		super();
 		this.mcode = mcode;
 		this.mdesc = mdesc;
@@ -16,6 +20,7 @@ public class SubMenuItemsDto {
 		this.smDesc = smDesc;
 		this.itCode = itCode;
 		this.itDesc = itDesc;
+		this.itPrice = itPrice;
 	}
 	public String getMcode() {
 		return mcode;
@@ -52,6 +57,12 @@ public class SubMenuItemsDto {
 	}
 	public void setItDesc(String itDesc) {
 		this.itDesc = itDesc;
+	}
+	public Double getItPrice() {
+		return itPrice;
+	}
+	public void setItPrice(Double itPrice) {
+		this.itPrice = itPrice;
 	}
 	
 	
